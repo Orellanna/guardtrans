@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Aduanera</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <script src="https://kit.fontawesome.com/50782e78c4.js" crossorigin="anonymous"></script>
+    <!---->
+</head>
+
+<body id="fondo">
+
+    {% include 'menusession.html' %}
+
+    <div class="container" id="contenedor">
+
+        <div id="fondo-tablas">
+            <div class="row">
+
+                <div class="fondo-form">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" disabled>Administrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" aria-current="page"
+                                href="/admingestion/registro">Registros</a>
+                        </li>
+                    </ul>
+
+                    <dir></dir>
+                    <div class="col-12">
+                        <h3 class="text-center">Gestion Aduanera</h3>
+                    </div>
+                    <dir></dir>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+
+                </div>
+                <div class="col-8">
+                    <br>
+                    <h3>Fecha: {{fecha}}</h3>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-9">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Buscar Vehiculo u Carga" aria-label="Search">
+                                <button class="btn btn-success" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                        <div class="col-3">
+                            <div class="dropdown">
+                                <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Gestionar
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#">Vehiculos</a></li>
+                                    <li><a class="dropdown-item" href="#">Cargas</a></li>
+                                    <li><a class="dropdown-item" href="#">Viajeros</a></li>
+                                    <li><a class="dropdown-item" href="#">Empresas</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-2">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <table class="table table-light table-striped table-hover align-middle table-bordered" id="tabla">
+                        <thead class="table-info">
+                            <tr>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Nacionalidad</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if paginacion.paginator.count >= 1 %}
+                                {% for item in paginacion %}
+                                <tr>
+                                    <th scope="row">{{item.carga_registro.placa_vehiculo.placa_vehiculo}}</th>
+                                    <td>{{item.carga_registro.nombre_mercancia}}</td>
+                                    <td>{{item.carga_registro.precio_mercancia}}</td>
+                                    <td>{{item.fecha_registro}}</td>
+                                    <td>
+                                        {% if item.estado_registro %}
+                                        Aprobado
+                                        {% else %}
+                                        Reprobado
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        <a href="/admingestion/info?id={{item.id_registro}}"
+                                            class="btn btn-light btn-outline-secondary">Detalles</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>No hay Resultados</td>
+                                <td></td>
+                                <td></td>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <br>
+                    <nav aria-label="...">
+                        <ul class="pagination justify-content-center">
+                            {% if paginacion.paginator.count >= 1 %}
+                                {% if paginacion.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ paginacion.previous_page_number}}">Previous</a>
+                                </li>
+                                {% endif %}
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="?page={{paginacion.number}}">{{paginacion.number}}</a>
+                                </li>
+
+                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                <li class="page-item" aria-current="page">
+                                    <a class="page-link"
+                                        href="?page={{paginacion.paginator.num_pages}}">{{paginacion.paginator.num_pages}}</a>
+                                </li>
+
+                                {% if paginacion.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{paginacion.next_page_number}}">Next</a>
+                                </li>
+                                {% endif %}
+
+                            {% endif %}
+                        </ul>
+                    </nav>
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-light text-center" id="footer">
+        <p>&copy;Tech Link Derechos Reservados</p>
+    </div>
+
+
+
+    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <!---->
+</body>
+
+</html>

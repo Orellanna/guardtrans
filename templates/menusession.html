@@ -1,0 +1,19 @@
+{% load static %}
+<nav class="navbar navba">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'imagenes/logov2.png' %}" alt="" width="90" height="60" class="d-inline-block">
+      </a>
+      <h3 class="d-inline-block">GUARDTRANS</h3>      
+      <div class="btn-group dropstart">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+          <span>{{login.username}}</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" id="opc" href="#">Configurar perfil</a></li>
+          <li><a class="dropdown-item" id="opc" href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </div>
+    </div>
+</nav>

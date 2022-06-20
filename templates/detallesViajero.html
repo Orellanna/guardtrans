@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viajero</title>
+  <!--Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <!-- Los iconos tipo Solid de Fontawesome-->
+  <script src="https://kit.fontawesome.com/50782e78c4.js" crossorigin="anonymous"></script>
+  <!---->
+</head>
+
+<body id="fondo">
+  {% include 'menusession.html' %}
+  <center>
+    <div id="contenedor">
+      <div id="fondo-form">
+        <form class="row g-3" id="form1">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" id="opc2" href="/adminu/{{request.user.username}}">Administrar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" id="opc" href="#">Detalles</a>
+            </li>
+          </ul> 
+          <div class="col-12">
+            <h3>Informacion de viajero</h3>
+          </div>
+          <div class="row g-3">
+            <label for="" class="form-label">Nombre de viajero</label>
+            <div class="col">
+              <input type="text" class="form-control" value="{{info.nombre_viajero}}" disabled>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" value="{{info.apellido_viajero}}" disabled>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="" class="form-label">Fecha de nacimiento</label>
+            <input type="" class="form-control" value="{{info.fachanaci_viajero | date:'dd/mm/YYYY'}}" disabled>
+          </div>
+
+          <div class="col-md-6">
+            <label for="" class="form-label">Cargo de viajero</label>
+            <input type="text" class="form-control" value="{{info.cargo_viajero}}" disabled>
+          </div>
+          <div class="col-6">
+            <label for="" class="form-label">Nacionalidad de viajero</label>
+            <input type="text" class="form-control" value="{{info.nacionalidad_viajero}}" disabled>
+          </div>
+          <div class="col-6">
+            <label for="" class="form-label">Nombre de Usuario</label>
+            <input type="text" class="form-control" value="{{info.usuario_viajero}}" disabled>
+          </div>
+          <div class="col-12" id="botones">
+            <a href="/initviajero/infoup/{{request.user.username}}" class="btn btn-primary">Editar</a>
+            <button onclick="history.back()" class="btn btn-primary">Volver</button> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </center>
+
+  <div class="container-fluid bg-light text-center" id="footer">
+    <p>&copy;Tech Link Derechos Reservados</p>
+  </div>
+
+  <!---->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <!---->
+</body>
+
+</html>

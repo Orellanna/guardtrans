@@ -1,0 +1,56 @@
+/* -------------------------------Index-----------------------*/
+body{display: grid; min-height: 100vh; grid-template-rows: auto 1fr auto;}
+#fondo{
+    background-image: url(Mesa\ de\ trabajo\ 1.png);
+    background-color: rgb(193, 233, 233);   
+}  
+.modal-dialog p{color: aliceblue;}
+.uimg img{width: 150px; height: 150px; margin-top: -75px; margin-bottom: 20px;}
+#imageb img{width: 220px; float: left; margin-right: 15px; margin-top: 10px;}
+#acciones{margin-bottom: 15px;} .navbar-nav a{color: black;}
+#unorder{display: contents;} #mm{margin-top: 100px;}
+
+#footer{margin-top: auto;} #opc{color: black;} #opc2{color: aliceblue;}
+/* -------------------------Login------------------------------*/   
+#fondo-login{background-color: #5c7b7e;}
+.main-section{margin: 0 auto; margin-top: 40%; margin-bottom: 40%; padding: 0%;}
+.user-img{margin-top: -50px; margin-bottom: 35px;}
+.user-img img{width: 150px; height: 100px; }
+.modal-content{background-color:darkcyan;}
+.modal-content button{margin-bottom: 30px;}
+.modal-content input{padding-left: 30px;}
+/* Iconos de impus */
+.form-group::before{font-family: "Font Awesome\ 5 Free"; position: absolute; left: 23px; padding-top: 7px;}
+.form-group#user-group::before{content: "\f007";}
+.form-group#contrasena-group::before{content: "\f023";}
+
+/* ---------------------------- registrarEmpresa-Viajero --------------------------*/
+#contenedor{padding: 5% 0;}
+#fondo-form{width: 60%; background-color: #5c7b7e; color: aliceblue; border-radius: 15px;}   
+#form1{margin: 25px 25px;} #botones{margin-bottom: 25px;}
+@media screen and (max-width: 700px){
+    #fondo-form{width: 85%;}
+}
+
+/*-------------------------- Inicio de sesi[on --------------*/
+.navba{background-color: #5c7b7e; justify-content: center;}
+.acciones a{text-decoration: none; color: black;}
+.navba h3{color: white; margin-left: 25px;} .navba a{text-decoration: none; color: aliceblue;}
+.row i{font-size: 100px;} .cont{margin-top: 10px;} .a{margin-top: 20px; margin-bottom: 20px;}
+.opciones{border-radius: 15px; height: 170px;} .opciones:hover{background-color: #5c7b7e;}
+
+/*----------------------------- Tablas -----------------------------------*/
+#tabla{margin-top: 10px;}  #fondo-tablas{background-color: #5c7b7e; color: aliceblue; border-radius: 15px;}
+
+/*--------------------Informacion aduanera----------------------*/
+#infor{background-color: #5c7b7e; color: aliceblue; border-radius: 12px;}
+
+
+
+.ocultar {
+    display: none;
+}
+
+.mostrar {
+    display: block;
+}
